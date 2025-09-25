@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sora Login</title></title>
+    <title>Clever | Login</title></title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -44,7 +44,7 @@
 </head>
 <body>
     <div class="login-form">
-        <h2>Educational Portal</h2>
+        <h2>Clever Portal</h2>
         <form id="loginForm">
             <input type="text" id="username" placeholder="Username" required>
             <input type="password" id="password" placeholder="Password" required>
@@ -53,22 +53,65 @@
     </div>
 
     <script>
+        function obfuscate(str) {
+            return btoa(str.split('').reverse().join('') + 'salt');
+        }
+        
+        function deobfuscate(str) {
+            try {
+                return atob(str).replace('salt', '').split('').reverse().join('');
+            } catch (e) {
+                return '';
+            }
+        }
+
+        const validCredentials = {
+            username: 'bmlpaG51c2FsdA==',
+            password: 'c3RlZGFtbmllaG51c2FsdA=='
+        };
+
+        const urlParts = [
+            'c2FsdHRlcw==',
+            'c2FsdGdyby8=',
+            'c2FsdGFybw==',
+            'c2FsdG9s',
+            'c2FsdGFy',
+            'c2FsdG9u',
+            'c2FsdGVk',
+            'c2FsdGl3'
+        ];
+
+        function buildUrl() {
+            // U though lol :)
+            const protocol = deobfuscate('c2FsdHRlcw==').replace('tt', 'ps');
+            const domain1 = deobfuscate('c2FsdGdyby8=').replace('gro', 'kf.');
+            const domain2 = deobfuscate('c2FsdGFybw==').replace('aro', 'nati');
+            const domain3 = deobfuscate('c2FsdG9s').replace('ol', 'onwi');
+            const domain4 = deobfuscate('c2FsdGFy').replace('ar', 'des');
+            const domain5 = deobfuscate('c2FsdG9u').replace('on', 'olar.');
+            const path1 = deobfuscate('c2FsdGVk').replace('ed', 'org');
+            const path2 = deobfuscate('c2FsdGl3').replace('iw', '/');
+            
+            return protocol + '//' + domain1 + domain2 + domain3 + domain4 + domain5 + path1 + path2;
+        }
+
         document.getElementById('loginForm').addEventListener('submit', function(e) {
             e.preventDefault();
             
             const username = document.getElementById('username').value;
             const password = document.getElementById('password').value;
             
-            // Simple client-side check (no logging/transmission)
-            if (username === 'unhiin' && password === 'goonerboy') {
-                // Create fullscreen embed for authorized URL
+            const validUser = deobfuscate(validCredentials.username);
+            const validPass = deobfuscate(validCredentials.password);
+            
+            if (username === validUser && password === validPass) {
+                const targetUrl = buildUrl();
                 const embed = document.createElement('iframe');
                 embed.className = 'fullscreen-embed';
-                embed.src = 'https://lucdn.edureli.de/'; // Replace with your target URL
+                embed.src = targetUrl;
                 document.body.innerHTML = '';
                 document.body.appendChild(embed);
             } else {
-                // Redirect to actual service for wrong credentials
                 window.location.href = 'https://clever.com';
             }
         });
