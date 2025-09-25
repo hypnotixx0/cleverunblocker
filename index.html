@@ -42,22 +42,6 @@
             border: none;
             z-index: 1000;
         }
-        .debug-info {
-            background: #f0f0f0;
-            padding: 10px;
-            margin-top: 10px;
-            border-radius: 5px;
-            font-size: 12px;
-            display: none;
-        }
-        .show-debug {
-            color: blue;
-            text-decoration: underline;
-            margin-top: 10px;
-            display: block;
-            text-align: center;
-            font-size: 14px;
-        }
     </style>
 </head>
 <body>
@@ -68,13 +52,6 @@
             <input type="password" id="password" placeholder="Password" required>
             <button type="submit">Sign In</button>
         </form>
-        
-        <a href="#" class="show-debug" onclick="toggleDebug()">Show Debug Info</a>
-        <div class="debug-info" id="debugInfo">
-            <strong>Expected Credentials:</strong><br>
-            Username: <span id="expectedUser"></span><br>
-            Password: <span id="expectedPass"></span>
-        </div>
     </div>
 
     <script>
@@ -104,18 +81,6 @@
             return parts.join('');
         }
 
-        function toggleDebug() {
-            const debugInfo = document.getElementById('debugInfo');
-            const expectedUser = document.getElementById('expectedUser');
-            const expectedPass = document.getElementById('expectedPass');
-            
-            expectedUser.textContent = deobfuscate(validCredentials.username);
-            expectedPass.textContent = deobfuscate(validCredentials.password);
-            
-            debugInfo.style.display = debugInfo.style.display === 'none' ? 'block' : 'none';
-            return false;
-        }
-
         document.getElementById('loginForm').addEventListener('submit', function(e) {
             e.preventDefault();
             
@@ -136,12 +101,6 @@
                 window.location.href = 'https://clever.com';
             }
         });
-
-        // Show expected credentials on page load for testing
-        setTimeout(() => {
-            document.getElementById('expectedUser').textContent = deobfuscate(validCredentials.username);
-            document.getElementById('expectedPass').textContent = deobfuscate(validCredentials.password);
-        }, 1000);
     </script>
 </body>
 </html>
