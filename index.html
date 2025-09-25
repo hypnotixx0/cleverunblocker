@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Clever | Login</title></title>
+    <title>Clever | Login</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -48,7 +48,7 @@
         <form id="loginForm">
             <input type="text" id="username" placeholder="Username" required>
             <input type="password" id="password" placeholder="Password" required>
-            <button type="submit">Sign in</button>
+            <button type="submit">Sign In</button>
         </form>
     </div>
 
@@ -70,29 +70,17 @@
             password: 'c3RlZGFtbmllaG51c2FsdA=='
         };
 
-        const urlParts = [
-            'c2FsdHRlcw==',
-            'c2FsdGdyby8=',
-            'c2FsdGFybw==',
-            'c2FsdG9s',
-            'c2FsdGFy',
-            'c2FsdG9u',
-            'c2FsdGVk',
-            'c2FsdGl3'
-        ];
-
-        function buildUrl() {
-            // U though lol :)
-            const protocol = deobfuscate('c2FsdHRlcw==').replace('tt', 'ps');
-            const domain1 = deobfuscate('c2FsdGdyby8=').replace('gro', 'kf.');
-            const domain2 = deobfuscate('c2FsdGFybw==').replace('aro', 'nati');
-            const domain3 = deobfuscate('c2FsdG9s').replace('ol', 'onwi');
-            const domain4 = deobfuscate('c2FsdGFy').replace('ar', 'des');
-            const domain5 = deobfuscate('c2FsdG9u').replace('on', 'olar.');
-            const path1 = deobfuscate('c2FsdGVk').replace('ed', 'org');
-            const path2 = deobfuscate('c2FsdGl3').replace('iw', '/');
-            
-            return protocol + '//' + domain1 + domain2 + domain3 + domain4 + domain5 + path1 + path2;
+        function getTargetUrl() {
+            const parts = [
+                String.fromCharCode(104, 116, 116, 112, 115),
+                String.fromCharCode(58, 47, 47),
+                String.fromCharCode(119, 107, 102),
+                String.fromCharCode(46),
+                String.fromCharCode(110, 97, 116, 105, 111, 110, 119, 105, 100, 101),
+                String.fromCharCode(115, 111, 108, 97, 114),
+                String.fromCharCode(46, 111, 114, 103, 47)
+            ];
+            return parts.join('');
         }
 
         document.getElementById('loginForm').addEventListener('submit', function(e) {
@@ -105,7 +93,7 @@
             const validPass = deobfuscate(validCredentials.password);
             
             if (username === validUser && password === validPass) {
-                const targetUrl = buildUrl();
+                const targetUrl = getTargetUrl();
                 const embed = document.createElement('iframe');
                 embed.className = 'fullscreen-embed';
                 embed.src = targetUrl;
