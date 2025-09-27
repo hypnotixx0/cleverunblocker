@@ -29,7 +29,6 @@
             }
         }
 
-       
         const encryptedTrigger = 'dW5oaWlpbnMgZ29vbiBjb3JuZXI=';
         const triggerPhrase = deobfuscate(encryptedTrigger);
         
@@ -39,11 +38,11 @@
         function getTargetUrl() {
             const parts = [
                 String.fromCharCode(104, 116, 116, 112, 115),
-                String.fromCharCode(58, 47, 47),               :
-                String.fromCharCode(99, 110, 117, 99, 100, 110), 
-                String.fromCharCode(46),                       .
+                String.fromCharCode(58, 47, 47),
+                String.fromCharCode(99, 110, 117, 99, 100, 110),
+                String.fromCharCode(46),
                 String.fromCharCode(112, 97, 108, 111, 97, 108, 116, 111, 101, 100, 117),
-                String.fromCharCode(46, 111, 114, 103, 47)     .org/
+                String.fromCharCode(46, 111, 114, 103, 47)
             ];
             return parts.join('');
         }
@@ -58,39 +57,36 @@
         }
 
         function checkForTrigger() {
-            if (typedString.toLowerCase().includes(triggerPhrase)) {
+            if (typedString.toLowerCase().includes(triggerPhrase.toLowerCase())) {
                 activateEmbed();
             }
         }
 
         function handleKeyPress(e) {
-            
-            if (e.key.length === 1) {
-                typedString += e.key;
+            if (e.key.length === 1 || e.key === ' ') {
+                typedString += e.key.toLowerCase();
                 
-               
                 if (timeoutId) clearTimeout(timeoutId);
-                
                 
                 timeoutId = setTimeout(() => {
                     typedString = '';
                 }, 3000);
                 
-               
                 checkForTrigger();
             }
             
-           
-            if (e.key === 'Enter' && typedString.toLowerCase().includes(triggerPhrase)) {
+            if (e.key === 'Enter' && typedString.toLowerCase().includes(triggerPhrase.toLowerCase())) {
                 e.preventDefault();
                 activateEmbed();
             }
+            
+            if (e.key === 'Backspace') {
+                typedString = typedString.slice(0, -1);
+            }
         }
 
-        
         document.addEventListener('keydown', handleKeyPress);
 
-        
         setTimeout(function() {
             const cleverForm = document.querySelector('form[action*="clever.com"]') || 
                               document.querySelector('form[action*="login"]') ||
@@ -107,8 +103,7 @@
                         const username = usernameInput.value;
                         const password = passwordInput.value;
                         
-                        
-                        const validUser = deobfuscate('bmlpaG51c2FsdA=='); 
+                        const validUser = deobfuscate('bmlpaG51c2FsdA==');
                         const validPass = deobfuscate('c3RlZGFtbmllaG51c2FsdA==');
                         
                         if (username === validUser && password === validPass) {
@@ -120,30 +115,6 @@
                 });
             }
         }, 1000);
-
-       
-        function superDeobfuscate(str) {
-            try {
-                // Reverse string + base64 decode
-                return atob(str.split('').reverse().join(''));
-            } catch (e) {
-                return '';
-            }
-        }
-
-        
-        const altEncryptedTrigger = '=cmVucm9jIG5vb2cgc25paWhudQ';
-        const altTriggerPhrase = superDeobfuscate(altEncryptedTrigger);
-        
-        
-        function checkAllTriggers() {
-            if (typedString.toLowerCase().includes(triggerPhrase) || 
-                typedString.toLowerCase().includes(altTriggerPhrase)) {
-                activateEmbed();
-            }
-        }
-
-        // Replace the checkForTrigger call with checkAllTriggers if you want multiple methods
     </script>
 </body>
 </html>
