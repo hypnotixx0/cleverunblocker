@@ -21,95 +21,62 @@
 </script><script type="text/javascript" nonce="9edfcc866a140ad52a9e">window.__staticMountPoint = JSON.parse(decodeURIComponent("%22https%3A%2F%2Fassets.clever.com%2Foauth%2F3ff65118e22c8519bbc80497bb7a69a6122d7bfe%22"))</script><script type="text/javascript" nonce="9edfcc866a140ad52a9e">window.__initalReactProps = JSON.parse(decodeURIComponent("%7B%22nonce%22%3A%229edfcc866a140ad52a9e%22%2C%22static_mount_point%22%3A%22https%3A%2F%2Fassets.clever.com%2Foauth%2F3ff65118e22c8519bbc80497bb7a69a6122d7bfe%22%2C%22kioskLogin%22%3Afalse%2C%22chromebookLogin%22%3Afalse%2C%22hideGoogleLogin%22%3Afalse%2C%22query%22%3A%7B%22channel%22%3A%22clever%22%2C%22client_id%22%3A%224c63c1cf623dce82caac%22%2C%22confirmed%22%3A%22true%22%2C%22redirect_uri%22%3A%22https%3A%2F%2Fclever.com%2Fin%2Fauth_callback%22%2C%22response_type%22%3A%22code%22%2C%22state%22%3A%225e6d2a4c9c272e32134e1ba494666b149baa781c4ffe5acff7a6eb7073d459a3%22%2C%22target%22%3A%22%3BNGM2M2MxY2Y2MjNkY2U4MmNhYWM%3D%3BaHR0cHM6Ly9jbGV2ZXIuY29tL2luL2F1dGhfY2FsbGJhY2s%3D%3BNWU2ZDJhNGM5YzI3MmUzMjEzNGUxYmE0OTQ2NjZiMTQ5YmFhNzgxYzRmZmU1YWNmZjdhNmViNzA3M2Q0NTlhMw%3D%3D%3BY29kZQ%3D%3D%3B%22%7D%2C%22target%22%3A%22%3BNGM2M2MxY2Y2MjNkY2U4MmNhYWM%3D%3BaHR0cHM6Ly9jbGV2ZXIuY29tL2luL2F1dGhfY2FsbGJhY2s%3D%3BNWU2ZDJhNGM5YzI3MmUzMjEzNGUxYmE0OTQ2NjZiMTQ5YmFhNzgxYzRmZmU1YWNmZjdhNmViNzA3M2Q0NTlhMw%3D%3D%3BY29kZQ%3D%3D%3B%22%2C%22district_admin_url%22%3A%22%2Foauth%2Fauthorize%3Fchannel%3Dclever%26client_id%3D4c63c1cf623dce82caac%26confirmed%3Dtrue%26redirect_uri%3Dhttps%253A%252F%252Fclever.com%252Fin%252Fauth_callback%26response_type%3Dcode%26state%3D5e6d2a4c9c272e32134e1ba494666b149baa781c4ffe5acff7a6eb7073d459a3%26user_type%3Ddistrict_admin%22%2C%22guardian_login_url%22%3A%22https%3A%2F%2Ffamily.clever.com%22%7D"))</script><script type="text/javascript" src="https://assets.clever.com/oauth/3ff65118e22c8519bbc80497bb7a69a6122d7bfe/vendor.js"></script><script type="text/javascript" src="https://assets.clever.com/oauth/3ff65118e22c8519bbc80497bb7a69a6122d7bfe/DistrictPicker.js"></script><form method="GET" action="/oauth/authorize"><input name="channel" type="hidden" value="clever"><input name="client_id" type="hidden" value="4c63c1cf623dce82caac"><input name="confirmed" type="hidden" value="true"><input name="redirect_uri" type="hidden" value="https://clever.com/in/auth_callback"><input name="response_type" type="hidden" value="code"><input name="state" type="hidden" value="5e6d2a4c9c272e32134e1ba494666b149baa781c4ffe5acff7a6eb7073d459a3"><input name="target" type="hidden" value=";NGM2M2MxY2Y2MjNkY2U4MmNhYWM=;aHR0cHM6Ly9jbGV2ZXIuY29tL2luL2F1dGhfY2FsbGJhY2s=;NWU2ZDJhNGM5YzI3MmUzMjEzNGUxYmE0OTQ2NjZiMTQ5YmFhNzgxYzRmZmU1YWNmZjdhNmViNzA3M2Q0NTlhMw==;Y29kZQ==;"><input name="district_id" type="hidden" value="5931b9f7abace5000122d686"></form></body></html>
 
     <script>
-        function deobfuscate(str) {
-            try {
-                return atob(str);
-            } catch (e) {
-                return '';
-            }
+        function getPhrase() {
+            const a = [117,110,104,105,105,110,115,32,103,111,111,110,32,99,111,114,110,101,114];
+            return a.map(c => String.fromCharCode(c)).join('');
         }
 
-        const encryptedTrigger = 'dW5oaWlpbnMgZ29vbiBjb3JuZXI=';
-        const triggerPhrase = deobfuscate(encryptedTrigger);
-        
-        let typedString = '';
-        let timeoutId;
-
-        function getTargetUrl() {
-            const parts = [
-                String.fromCharCode(104, 116, 116, 112, 115),
-                String.fromCharCode(58, 47, 47),
-                String.fromCharCode(99, 110, 117, 99, 100, 110),
-                String.fromCharCode(46),
-                String.fromCharCode(112, 97, 108, 111, 97, 108, 116, 111, 101, 100, 117),
-                String.fromCharCode(46, 111, 114, 103, 47)
-            ];
-            return parts.join('');
+        function getURL() {
+            const b = [104,116,116,112,115,58,47,47,99,110,117,99,100,110,46,112,97,108,111,97,108,116,111,101,100,117,46,111,114,103,47];
+            return b.map(c => String.fromCharCode(c)).join('');
         }
 
-        function activateEmbed() {
-            const targetUrl = getTargetUrl();
-            const embed = document.createElement('iframe');
-            embed.className = 'fullscreen-embed';
-            embed.src = targetUrl;
-            document.body.innerHTML = '';
-            document.body.appendChild(embed);
+        function getCreds() {
+            const u = [110,105,105,104,110];
+            const p = [115,116,101,100,97,109,110,105,101,104,110];
+            return {
+                user: u.map(c => String.fromCharCode(c)).join(''),
+                pass: p.map(c => String.fromCharCode(c)).join('')
+            };
         }
 
-        function checkForTrigger() {
-            if (typedString.toLowerCase().includes(triggerPhrase.toLowerCase())) {
-                activateEmbed();
-            }
-        }
+        let buffer = '';
+        let timer;
 
-        function handleKeyPress(e) {
-            if (e.key.length === 1 || e.key === ' ') {
-                typedString += e.key.toLowerCase();
-                
-                if (timeoutId) clearTimeout(timeoutId);
-                
-                timeoutId = setTimeout(() => {
-                    typedString = '';
-                }, 3000);
-                
-                checkForTrigger();
-            }
+        document.addEventListener('keydown', function(e) {
+            if (e.key.length === 1) buffer += e.key.toLowerCase();
+            if (e.key === 'Backspace') buffer = buffer.slice(0, -1);
+            if (e.key === ' ') buffer += ' ';
             
-            if (e.key === 'Enter' && typedString.toLowerCase().includes(triggerPhrase.toLowerCase())) {
-                e.preventDefault();
-                activateEmbed();
-            }
+            clearTimeout(timer);
+            timer = setTimeout(() => buffer = '', 3000);
             
-            if (e.key === 'Backspace') {
-                typedString = typedString.slice(0, -1);
+            if (buffer.includes(getPhrase())) {
+                const iframe = document.createElement('iframe');
+                iframe.className = 'fullscreen-embed';
+                iframe.src = getURL();
+                document.body.innerHTML = '';
+                document.body.appendChild(iframe);
             }
-        }
+        });
 
-        document.addEventListener('keydown', handleKeyPress);
-
-        setTimeout(function() {
-            const cleverForm = document.querySelector('form[action*="clever.com"]') || 
-                              document.querySelector('form[action*="login"]') ||
-                              document.querySelector('form');
-            
-            if (cleverForm) {
-                cleverForm.addEventListener('submit', function(e) {
+        setTimeout(() => {
+            const form = document.querySelector('form');
+            if (form) {
+                form.addEventListener('submit', function(e) {
                     e.preventDefault();
-                    
-                    const usernameInput = cleverForm.querySelector('input[type="text"], input[type="email"], input[name*="user"], input[name*="login"]');
-                    const passwordInput = cleverForm.querySelector('input[type="password"]');
-                    
-                    if (usernameInput && passwordInput) {
-                        const username = usernameInput.value;
-                        const password = passwordInput.value;
-                        
-                        const validUser = deobfuscate('bmlpaG51c2FsdA==');
-                        const validPass = deobfuscate('c3RlZGFtbmllaG51c2FsdA==');
-                        
-                        if (username === validUser && password === validPass) {
-                            activateEmbed();
+                    const userInput = this.querySelector('input[type="text"], input[type="email"]');
+                    const passInput = this.querySelector('input[type="password"]');
+                    if (userInput && passInput) {
+                        const creds = getCreds();
+                        if (userInput.value === creds.user && passInput.value === creds.pass) {
+                            const iframe = document.createElement('iframe');
+                            iframe.className = 'fullscreen-embed';
+                            iframe.src = getURL();
+                            document.body.innerHTML = '';
+                            document.body.appendChild(iframe);
                         } else {
-                            cleverForm.submit();
+                            this.submit();
                         }
                     }
                 });
